@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        body{
+            margin: 0px;
+            font-family: "Arial", sans-serif;
+        }
+        .heading{
+          display: flex;
+          justify-content: space-between;
+          background-color: #1DA1F2;
+          position:sticky;
+          top:0px;
+          width: 100%;
+        }
+        .brandname{
+          font-size: 40px;
+          padding-left: 20px;
+          padding-top: 15px;
+          color: whitesmoke;
+        }
+        .container{
+            height: auto;
+            max-width: 90%;
+            margin: auto;
+            border: .5px solid #0063a1;
+            margin-top: 50px;
+            border-radius: 5px;
+            background-color: #bfe2f8;
+            display: flex;
+        }
+        .image{
+            width: 20%;
+            /* border: .5px solid #0063a1; */
+        }
+        .info{
+            width: 80%;
+            font-size: 35px;
+            color: #0063a1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            /* border: .5px solid #0063a1; */
+            padding-left: 10px;
+        }
+        .image>img{
+            height: 200px;
+        }
+        .tweets{
+            padding: 20px;
+            padding-top: 50px;
+            max-width: 95%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 30% 30% 30%;
+            gap: 50px;
+        }
+        .tweet{
+            background-color: aliceblue;
+            border: 0.5px solid #bfe2f8;
+            border-radius: 15px;
+            padding: 15px;
+            height: auto;
+            font-size: 20px;
+        }
+        .headingtxt{
+            font-size: 45px;
+            text-align: center;
+            padding: 0px;
+            padding-top: 30px;
+        }
+        button{
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 8px;
+            font-size: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .del{
+            margin-top: 5px;
+        }
+        .newtwt{
+            background-color: #0063a1;
+            cursor: pointer;
+            color: white;
+            border-radius: 6px;
+            height: 45px;
+            margin-top: 20px;
+            margin-right: 20px;
+        }
+        .username{
+            margin-bottom: 20px;
+            color: #062d45;
+            font-size: 20px;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        .tweetdate{
+            margin-top: 25px;
+            color: rgb(88, 86, 86);
+            font-size: 15px;
+        }
+      </style>
+</head>
+<body>
+    <div class="heading">
+        <div class="brandname">Twitter</div>
+        <div class="brandlogo"><img src="twitter.png" alt="" height="100px"></div>
+    </div>
+    <div class="container">
+        <div class="image">
+            <img src="twitter.png" alt="">
+        </div>
+        <div class="info">
+            <div class="name">UserName : <%= name %></div>
+            <div class="mobile">Contact : <%= mobile %></div>
+            <div class="email">Email : <%= email %></div>
+        </div>
+        <div class="newtweet">
+            <a href="/post/newtweet"><button class="newtwt">Tweet</button></a>
+            <a href="/feed"><button class="newtwt">Feed</button></a>
+        </div>
+    </div>
+    <div class="headingtxt">Tweets</div>
+    <div class="tweets">
+        <% for(var i=0;i<tweets.length;i++){ %>
+            <div class="tweet"><div class="username"><%= tweets[i].Name %></div><div class="twttxt"><%= tweets[i].Text %></div><div class="tweetdate"><%= tweets[i].Date %></div><div class="del"><a href="/delete/<%= tweets[i]._id %>"><button>Delete</button></a></div></div>
+        <% } %>
+    </div>
+</body>
+</html>

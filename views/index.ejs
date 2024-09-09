@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <style>
+    .heading{
+      display: flex;
+      justify-content: space-between;
+      background-color: #1DA1F2;
+      position:sticky;
+      top:0px;
+      width: 100%;
+    }
+    .brandname{
+      font-size: 40px;
+      padding-left: 20px;
+      padding-top: 15px;
+      color: whitesmoke;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="heading">
+    <div class="brandname">Twitter</div>
+    <div class="brandlogo"><img src="twitter.png" alt="" height="100px"></div>
+  </div>
+  <div class="container">
+    <h1></h1>
+    <a id="newPostBtn" href="/new">Tweet</a>
+    <ul id="postsList">
+      <% posts.forEach(post=> { %>
+        <li>
+          <h2>
+            <%=post.title%>
+          </h2>
+          <small>
+            <%=post.date %>
+          </small>
+          <p>
+            <%=post.content%>
+          </p>
+          <small>By: <%=post.author%> </small>
+          <a class="edit" href="/edit/<%= post.id %>">Edit</a>
+          <a class="delete" href="/posts/delete/<%= post.id %>">Delete</a>
+        </li>
+        <% }); %>
+    </ul>
+  </div>
+
+</body>
+
+</html>
